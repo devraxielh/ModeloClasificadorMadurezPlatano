@@ -58,15 +58,14 @@ def decode_base64_image(image_base64: str) -> Image.Image:
         logger.error(f"Error decoding base64 image: {str(e)}")
         raise HTTPException(status_code=400, detail="Invalid base64 image data")
 
-@app.get("/")
-def read_root():
+@app.get("/test")
+def test():
     return {"message": "API funcionando correctamente"}
 
 @app.post("/predict/")
 async def predict_image_base64(data: dict):
     """
     Endpoint que recibe una imagen en base64 y devuelve la predicción
-    
     Ejemplo de body request:
     {
         "image": "base64encodedstring..."
